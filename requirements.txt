@@ -1,0 +1,5 @@
+dvc>=3.67
+pandas
+scikit-learn
+mlflow
+prefect
