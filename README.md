@@ -16,11 +16,11 @@ Datos, versión y atribución: [`docs/DATASET.md`](docs/DATASET.md).
 
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-lock.txt   # versiones exactas (o requirements.txt)
 
 # Obtener los datos (dos opciones)
-python -m src.data.download   # desde la fuente oficial de UNSW, verifica SHA-256
-dvc pull                      # desde el remoto DVC (cuando esté configurado)
+python -m src.data.download --full   # los 9 CSV desde la fuente oficial de UNSW, verifica SHA-256
+dvc pull                             # desde el remoto DVC (cuando esté configurado)
 ```
 
 ## Estructura

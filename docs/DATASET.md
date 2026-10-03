@@ -29,7 +29,23 @@ Observaciones iniciales:
 
 - El encabezado del training CSV trae un BOM UTF-8 (`﻿id`); leer con `encoding="utf-8-sig"`.
 - Los nombres "training" y "testing" son los de UNSW. Según la guía, el set de test debe usarse una sola vez al final; las particiones de validación se sacan del training.
-- Los CSV completos (`UNSW-NB15_1..4.csv`, ~2,5 M registros) se pueden bajar con `python -m src.data.download --full`.
+
+### CSV completos (carpeta `CSV Files`)
+
+La carpeta oficial `CSV Files` contiene 7 CSV, y la subcarpeta `Training and Testing Sets` 2 más (9 en total). Todos están en `data/raw/` (`python -m src.data.download --full`).
+
+| Archivo | Registros | Contenido |
+|---|---:|---|
+| `UNSW-NB15_1.csv` | 700.001 | Registros completos, parte 1 |
+| `UNSW-NB15_2.csv` | 700.001 | Parte 2 |
+| `UNSW-NB15_3.csv` | 700.001 | Parte 3 |
+| `UNSW-NB15_4.csv` | 440.044 | Parte 4 |
+| `NUSW-NB15_GT.csv` | 188.913 | Ground truth de los ataques |
+| `NUSW-NB15_features.csv` | 49 | Nombres y descripción de las 49 variables |
+| `UNSW-NB15_LIST_EVENTS.csv` | 208 | Lista de eventos de ataque |
+
+- Los CSV `UNSW-NB15_1..4` **no tienen encabezado**: los nombres de columna se toman de `NUSW-NB15_features.csv` (leer con `encoding="latin-1"`).
+- Suman **2.540.047** registros, aunque la página de UNSW indica 2.540.044. Diferencia de 3 filas entre la documentación y los archivos.
 
 ## Condiciones de uso
 

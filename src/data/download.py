@@ -4,7 +4,7 @@ Fuente: https://research.unsw.edu.au/projects/unsw-nb15-dataset
 Uso académico; ver docs/DATASET.md para atribución y citas obligatorias.
 
     python -m src.data.download            # train/test oficiales + metadatos
-    python -m src.data.download --full     # además, los 4 CSV completos (~590 MB)
+    python -m src.data.download --full     # además, los 4 CSV completos (~670 MB)
 """
 
 import argparse
@@ -14,6 +14,7 @@ import json
 import sys
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 SHARE_URL = (
@@ -39,11 +40,16 @@ FILES = [
      "d32464d62346c12a7caa7b140d3c26cb9fd3f97898c3bddb49a8db5375ee6608"),
 ]
 FULL_FILES = [
-    ("CSV Files/UNSW-NB15_1.csv", None),
-    ("CSV Files/UNSW-NB15_2.csv", None),
-    ("CSV Files/UNSW-NB15_3.csv", None),
-    ("CSV Files/UNSW-NB15_4.csv", None),
-    ("CSV Files/NUSW-NB15_GT.csv", None),
+    ("CSV Files/UNSW-NB15_1.csv",
+     "7d851bbeabd27894ce39c8e78835c73341fc946652fb7743b9eff193b55eb511"),
+    ("CSV Files/UNSW-NB15_2.csv",
+     "6130ad02873cc6069ae695cf2844f2e8c2e9a9a1b7532dd82ab8f202757cacf8"),
+    ("CSV Files/UNSW-NB15_3.csv",
+     "ae990a96c3dfcd425ce2801aadb1727a34d5e0ae6d8215dbcdae60dedfaef640"),
+    ("CSV Files/UNSW-NB15_4.csv",
+     "cdf563692d51d405541dd659ddcdad9fa01f001f05fe9fc4b67f00ca12fbc96a"),
+    ("CSV Files/NUSW-NB15_GT.csv",
+     "6d27542cb6457db599e0a78274ac141fec0296531f00ac5569551a276c5ab1a8"),
 ]
 
 
@@ -82,14 +88,20 @@ def main() -> int:
 
     args.out.mkdir(parents=True, exist_ok=True)
     opener = build_opener()
+    files = FILES + (FULL_FILES if args.full else [])
+
+    # SharePoint limita la velocidad por conexión: se descargan los archivos en paralelo.
+    pending = [r for r, _ in files if not (args.out / Path(r).name).exists()]
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        futures = {pool.submit(download, opener, r, args.out / Path(r).name): r for r in pending}
+        print(f"↓ {len(pending)} archivos en paralelo")
+        for future in as_completed(futures):
+            future.result()
+            print(f"✓ {futures[future]}", flush=True)
+
     manifest = {}
-    for remote, expected in FILES + (FULL_FILES if args.full else []):
+    for remote, expected in files:
         dest = args.out / Path(remote).name
-        if dest.exists():
-            print(f"= {dest} (ya existe)")
-        else:
-            print(f"↓ {remote}")
-            download(opener, remote, dest)
         digest = sha256(dest)
         if expected and digest != expected:
             print(f"✗ checksum distinto en {dest}: {digest}", file=sys.stderr)
