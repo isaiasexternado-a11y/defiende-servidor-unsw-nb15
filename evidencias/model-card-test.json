@@ -1,0 +1,11 @@
+{
+  "evaluated_revision": "9da5454fe51b13cbb471a6b266d25ad681861504",
+  "card_revision": "cfd5b24f8496c172b2a4e641bb600a97700313e4",
+  "repo": "Isxcesp/defiende-servidor-unsw-nb15",
+  "unchanged_files": {
+    "model.joblib": "4e173642c483816c4f073fe6e003394f0ca4ed40069ef864e97cc06d978b6ab2",
+    "config.json": "c2c267c7ce603fab8339dbf9657862306eb2f5f2",
+    "requirements.txt": "f144abab27aa880bc4a88475f0e304577398a7bc"
+  },
+  "model_sha256": "4e173642c483816c4f073fe6e003394f0ca4ed40069ef864e97cc06d978b6ab2"
+}
