@@ -1,0 +1,96 @@
+{
+  "version": "v2",
+  "config_id": "e4_hist_gradient_boosting",
+  "model_sha256": "4e173642c483816c4f073fe6e003394f0ca4ed40069ef864e97cc06d978b6ab2",
+  "huggingface": {
+    "repo": "Isxcesp/defiende-servidor-unsw-nb15",
+    "revision_sha": "9da5454fe51b13cbb471a6b266d25ad681861504",
+    "tag": "v2",
+    "url": "https://huggingface.co/Isxcesp/defiende-servidor-unsw-nb15/tree/9da5454fe51b13cbb471a6b266d25ad681861504"
+  },
+  "mlflow_run_id": "216748533c514fc5b4625ceed0aeee59",
+  "frozen_selection": {
+    "git_commit": "94131ed859c9125b88a993dc1f828c552e40ce5a",
+    "committed_at": "2026-10-27T14:29:03-05:00"
+  },
+  "evaluated_at_utc": "2026-10-27T19:29:14+00:00",
+  "dataset": {
+    "file": "data/prepared/test.csv",
+    "sha256": "2a6532cc6e294ca47209ac906458389c1bf14af648804fb394f8e2b4facd7a78",
+    "raw_file": "UNSW_NB15_testing-set.csv",
+    "raw_sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "rows_evaluated": 82332
+  },
+  "threshold": 0.65,
+  "threshold_rule": "ataque si score_attack >= threshold",
+  "positive_class": "1 = ataque",
+  "metrics": {
+    "recall_attack": 0.9684108356128122,
+    "precision_attack": 0.86738322927369,
+    "fpr": 0.1814054054054054,
+    "f1_attack": 0.9151171516718085,
+    "f1_normal": 0.8814901047729918,
+    "macro_f1": 0.8983036282224002,
+    "accuracy": 0.9010834183549531,
+    "confusion_matrix": {
+      "tn": 30288,
+      "fp": 6712,
+      "fn": 1432,
+      "tp": 43900
+    },
+    "zero_division": []
+  },
+  "val_metrics_same_threshold": {
+    "recall_attack": 0.9521885521885521,
+    "precision_attack": 0.9762665055665832,
+    "fpr": 0.04945598417408507,
+    "f1_attack": 0.9640772148122896,
+    "f1_normal": 0.9261433327492553,
+    "macro_f1": 0.9451102737807724,
+    "accuracy": 0.9516642298099252,
+    "confusion_matrix": {
+      "tn": 10571,
+      "fp": 550,
+      "fn": 1136,
+      "tp": 22624
+    },
+    "zero_division": []
+  },
+  "breakdown_informativo": {
+    "inputs_seen_in_train_val": {
+      "rows": 8313,
+      "recall_attack": 0.9981594223417811,
+      "precision_attack": 0.9652245345016429,
+      "fpr": 0.2032,
+      "f1_attack": 0.9814157444142827,
+      "f1_normal": 0.8818061088977424,
+      "macro_f1": 0.9316109266560125,
+      "accuracy": 0.9678816311800794,
+      "confusion_matrix": {
+        "tn": 996,
+        "fp": 254,
+        "fn": 13,
+        "tp": 7050
+      },
+      "zero_division": []
+    },
+    "inputs_unseen": {
+      "rows": 74019,
+      "recall_attack": 0.9629203794193734,
+      "precision_attack": 0.8508820541239493,
+      "fpr": 0.18064335664335665,
+      "f1_attack": 0.9034409208477879,
+      "f1_normal": 0.8814793638374385,
+      "macro_f1": 0.8924601423426133,
+      "accuracy": 0.8935813777543604,
+      "confusion_matrix": {
+        "tn": 29292,
+        "fp": 6458,
+        "fn": 1419,
+        "tp": 36850
+      },
+      "zero_division": []
+    }
+  },
+  "recompute": "python -c \"import pandas as pd; from src.metrics import binary_metrics; p=pd.read_csv('evidencias/predicciones-test.csv'); print(binary_metrics(p.y_true, p.y_pred))\""
+}
