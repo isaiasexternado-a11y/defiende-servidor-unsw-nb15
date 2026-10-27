@@ -1,0 +1,11 @@
+{
+  "n_rows": 25,
+  "seed": 42,
+  "hashes": {
+    "entrada.csv": "68a6c1e9797eb0ed4df59f5775aab3b399ea97de786eb9d1fd9325d5f058d590",
+    "antes_v1.csv": "04d91917f2069f781abe5c84ec7d51f9a3778639ce854e352579030ae681c7bf",
+    "model_v1.joblib": "4a9e3d854a328082157a4f136a3ea1a2943d1f025c0144cd35a2300848907658",
+    "antes_v2.csv": "5ec78770e6315138e9fb642eaaa5e5729f6f54cc9ad0da2c191ca50c505dcbf4",
+    "model_v2.joblib": "4e173642c483816c4f073fe6e003394f0ca4ed40069ef864e97cc06d978b6ab2"
+  }
+}
