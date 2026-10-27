@@ -1,0 +1,44 @@
+## 2026-10-27T14:46:21-05:00 · máquina: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64 · python: Python 3.14.4
+## 1. código en revisión af36f31
+commit: af36f31c9488e7f9af4c780ddfc043ac8eba3765
+dvc==3.67.1
+huggingface_hub==2.3.0
+mlflow==3.16.1
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+## 2. datos con DVC desde el remoto (caché vacía: 0 entradas)
+A       data/prepared/
+A       data/raw/
+18 files fetched and 16 files added
+Data and pipelines are up to date.
+SHA-256 originales contra MANIFEST.json:
+  ✓ raw/UNSW_NB15_training-set.csv
+  ✓ raw/UNSW_NB15_testing-set.csv
+  ✓ prepared/train.csv
+  ✓ prepared/val.csv
+  ✓ prepared/test.csv
+  ✓ prepared/splits.csv
+## 3-4. modelos desde Hugging Face por SHA y predicción sobre las entradas fijas
+  ✓ entrada.csv coincide con las filas de val recuperadas por DVC
+v1 → revisión HF 98c0228f88069b0a48ff041388bd1a4eb76a309b
+2026/10/27 14:49:59 INFO mlflow.agent.hint: Load the `instrumenting-with-mlflow-tracing` skill at /home/isaias/recuperacion-defiende-servidor/repo/.venv/lib/python3.14/site-packages/mlflow/assistant/skills/instrumenting-with-mlflow-tracing/SKILL.md before writing any tracing code; it ships with this MLflow install. Set MLFLOW_DISABLE_AGENT_HINT=1 to silence this.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+✓ v1 (e1_logreg_base, umbral 0.5) → /home/isaias/recuperacion-defiende-servidor/salidas/despues_v1.csv [25 filas]
+v2 → revisión HF 9da5454fe51b13cbb471a6b266d25ad681861504
+2026/10/27 14:50:05 INFO mlflow.agent.hint: Load the `instrumenting-with-mlflow-tracing` skill at /home/isaias/recuperacion-defiende-servidor/repo/.venv/lib/python3.14/site-packages/mlflow/assistant/skills/instrumenting-with-mlflow-tracing/SKILL.md before writing any tracing code; it ships with this MLflow install. Set MLFLOW_DISABLE_AGENT_HINT=1 to silence this.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+✓ v2 (e4_hist_gradient_boosting, umbral 0.65) → /home/isaias/recuperacion-defiende-servidor/salidas/despues_v2.csv [25 filas]
+04d91917f2069f781abe5c84ec7d51f9a3778639ce854e352579030ae681c7bf  /home/isaias/recuperacion-defiende-servidor/salidas/despues_v1.csv
+5ec78770e6315138e9fb642eaaa5e5729f6f54cc9ad0da2c191ca50c505dcbf4  /home/isaias/recuperacion-defiende-servidor/salidas/despues_v2.csv
+04d91917f2069f781abe5c84ec7d51f9a3778639ce854e352579030ae681c7bf  evidencias/recuperacion/antes_v1.csv
+5ec78770e6315138e9fb642eaaa5e5729f6f54cc9ad0da2c191ca50c505dcbf4  evidencias/recuperacion/antes_v2.csv
+68a6c1e9797eb0ed4df59f5775aab3b399ea97de786eb9d1fd9325d5f058d590  evidencias/recuperacion/entrada.csv
+4e173642c483816c4f073fe6e003394f0ca4ed40069ef864e97cc06d978b6ab2  /home/isaias/recuperacion-defiende-servidor/hf-cache/hub/models--Isxcesp--defiende-servidor-unsw-nb15/snapshots/9da5454fe51b13cbb471a6b266d25ad681861504/model.joblib
+4a9e3d854a328082157a4f136a3ea1a2943d1f025c0144cd35a2300848907658  /home/isaias/recuperacion-defiende-servidor/hf-cache/hub/models--Isxcesp--defiende-servidor-unsw-nb15/snapshots/98c0228f88069b0a48ff041388bd1a4eb76a309b/model.joblib
+## 5. comparación con las salidas de referencia
+2026/10/27 14:50:11 INFO mlflow.agent.hint: Load the `instrumenting-with-mlflow-tracing` skill at /home/isaias/recuperacion-defiende-servidor/repo/.venv/lib/python3.14/site-packages/mlflow/assistant/skills/instrumenting-with-mlflow-tracing/SKILL.md before writing any tracing code; it ships with this MLflow install. Set MLFLOW_DISABLE_AGENT_HINT=1 to silence this.
+✓ v1: filas=25 max|Δscore|=0.0 etiquetas iguales=True
+✓ v2: filas=25 max|Δscore|=0.0 etiquetas iguales=True
+## fin 2026-10-27T14:50:12-05:00
+exit=0

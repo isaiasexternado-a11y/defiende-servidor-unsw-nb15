@@ -1,0 +1,20 @@
+{
+  "tolerance_abs_score": 1e-09,
+  "versions": {
+    "v1": {
+      "rows": 25,
+      "same_row_ids": true,
+      "max_abs_score_diff": 0.0,
+      "same_labels": true,
+      "passed": true
+    },
+    "v2": {
+      "rows": 25,
+      "same_row_ids": true,
+      "max_abs_score_diff": 0.0,
+      "same_labels": true,
+      "passed": true
+    }
+  },
+  "passed": true
+}
