@@ -1,0 +1,264 @@
+{
+  "source": "https://research.unsw.edu.au/projects/unsw-nb15-dataset",
+  "download_date": "2026-10-02",
+  "files": {
+    "train": {
+      "file": "UNSW_NB15_training-set.csv",
+      "sha256": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+      "bytes": 32293018,
+      "rows": 175341,
+      "columns": 45,
+      "classes": {
+        "0": 56000,
+        "1": 119341
+      },
+      "attack_cat": {
+        "Normal": 56000,
+        "Generic": 40000,
+        "Exploits": 33393,
+        "Fuzzers": 18184,
+        "DoS": 12264,
+        "Reconnaissance": 10491,
+        "Analysis": 2000,
+        "Backdoor": 1746,
+        "Shellcode": 1133,
+        "Worms": 130
+      },
+      "missing_total": 0,
+      "dtypes": {
+        "id": "int64",
+        "dur": "float64",
+        "proto": "str",
+        "service": "str",
+        "state": "str",
+        "spkts": "int64",
+        "dpkts": "int64",
+        "sbytes": "int64",
+        "dbytes": "int64",
+        "rate": "float64",
+        "sttl": "int64",
+        "dttl": "int64",
+        "sload": "float64",
+        "dload": "float64",
+        "sloss": "int64",
+        "dloss": "int64",
+        "sinpkt": "float64",
+        "dinpkt": "float64",
+        "sjit": "float64",
+        "djit": "float64",
+        "swin": "int64",
+        "stcpb": "int64",
+        "dtcpb": "int64",
+        "dwin": "int64",
+        "tcprtt": "float64",
+        "synack": "float64",
+        "ackdat": "float64",
+        "smean": "int64",
+        "dmean": "int64",
+        "trans_depth": "int64",
+        "response_body_len": "int64",
+        "ct_srv_src": "int64",
+        "ct_state_ttl": "int64",
+        "ct_dst_ltm": "int64",
+        "ct_src_dport_ltm": "int64",
+        "ct_dst_sport_ltm": "int64",
+        "ct_dst_src_ltm": "int64",
+        "is_ftp_login": "int64",
+        "ct_ftp_cmd": "int64",
+        "ct_flw_http_mthd": "int64",
+        "ct_src_ltm": "int64",
+        "ct_srv_dst": "int64",
+        "is_sm_ips_ports": "int64",
+        "attack_cat": "str",
+        "label": "int64"
+      }
+    },
+    "test": {
+      "file": "UNSW_NB15_testing-set.csv",
+      "sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+      "bytes": 15380800,
+      "rows": 82332,
+      "columns": 45,
+      "classes": {
+        "0": 37000,
+        "1": 45332
+      },
+      "attack_cat": {
+        "Normal": 37000,
+        "Generic": 18871,
+        "Exploits": 11132,
+        "Fuzzers": 6062,
+        "DoS": 4089,
+        "Reconnaissance": 3496,
+        "Analysis": 677,
+        "Backdoor": 583,
+        "Shellcode": 378,
+        "Worms": 44
+      },
+      "missing_total": 0,
+      "dtypes": {
+        "id": "int64",
+        "dur": "float64",
+        "proto": "str",
+        "service": "str",
+        "state": "str",
+        "spkts": "int64",
+        "dpkts": "int64",
+        "sbytes": "int64",
+        "dbytes": "int64",
+        "rate": "float64",
+        "sttl": "int64",
+        "dttl": "int64",
+        "sload": "float64",
+        "dload": "float64",
+        "sloss": "int64",
+        "dloss": "int64",
+        "sinpkt": "float64",
+        "dinpkt": "float64",
+        "sjit": "float64",
+        "djit": "float64",
+        "swin": "int64",
+        "stcpb": "int64",
+        "dtcpb": "int64",
+        "dwin": "int64",
+        "tcprtt": "float64",
+        "synack": "float64",
+        "ackdat": "float64",
+        "smean": "int64",
+        "dmean": "int64",
+        "trans_depth": "int64",
+        "response_body_len": "int64",
+        "ct_srv_src": "int64",
+        "ct_state_ttl": "int64",
+        "ct_dst_ltm": "int64",
+        "ct_src_dport_ltm": "int64",
+        "ct_dst_sport_ltm": "int64",
+        "ct_dst_src_ltm": "int64",
+        "is_ftp_login": "int64",
+        "ct_ftp_cmd": "int64",
+        "ct_flw_http_mthd": "int64",
+        "ct_src_ltm": "int64",
+        "ct_srv_dst": "int64",
+        "is_sm_ips_ports": "int64",
+        "attack_cat": "str",
+        "label": "int64"
+      }
+    }
+  },
+  "duplicates": {
+    "train_file": {
+      "rows": 175341,
+      "unique_input_groups": 101040,
+      "duplicate_rows_by_inputs": 74301,
+      "contradictory_groups": 229,
+      "rows_in_contradictory_groups": 940
+    },
+    "test_file": {
+      "rows": 82332,
+      "unique_input_groups": 53946,
+      "duplicate_rows_by_inputs": 28386,
+      "contradictory_groups": 6,
+      "rows_in_contradictory_groups": 14
+    }
+  },
+  "cleaning_policy": {
+    "duplicates": "Se conservan (reflejan la frecuencia real de conexiones), pero cada grupo de entradas idénticas queda completo en una sola partición.",
+    "contradictions": "drop: las filas de grupos con etiquetas 0 y 1 se excluyen de train/val (quedan marcadas en splits.csv). El test no se modifica.",
+    "missing": "Sin faltantes en ningún archivo; el pipeline igual imputa por robustez.",
+    "id_leak": "El archivo de training está ordenado por clase (id 1..56000 normal, luego ataques): `id` predice la etiqueta y se excluye."
+  },
+  "features": {
+    "used": [
+      "dur",
+      "proto",
+      "service",
+      "state",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports"
+    ],
+    "categorical": [
+      "proto",
+      "service",
+      "state"
+    ],
+    "excluded": [
+      "id",
+      "label",
+      "attack_cat"
+    ]
+  },
+  "split": {
+    "method": "StratifiedGroupKFold(n_splits=5, shuffle=True), fold 0 = val; grupo = huella de entradas",
+    "seed": 42,
+    "sizes": {
+      "train": 139520,
+      "val": 34881,
+      "excluded_contradictory": 940,
+      "test": 82332
+    },
+    "classes": {
+      "train": {
+        "0": 44483,
+        "1": 95037
+      },
+      "val": {
+        "0": 11121,
+        "1": 23760
+      }
+    },
+    "row_id_sha256": {
+      "train": "d8c941852f0777ce86dc8899d0b0c3cd646a80e4f9d2c72b48b1e72af8a6f200",
+      "val": "2342f0bc2047f190b9467eef0e77feaa982f98d2bd148219dc5e06080db9cf05",
+      "test": "c0700bae913b90be5d5ef17987abf1a67eed4c7998843593a85bb803fed4837f"
+    },
+    "file_sha256": {
+      "train.csv": "3bd9a618442fd5d6bb1755b5fa3a5ada4272af3c509989769ffe56b262268125",
+      "val.csv": "e768091cf9767dc927493a17a46fe2d5cefa5e565c4f6dcd439d8fb3880a1acf",
+      "test.csv": "2a6532cc6e294ca47209ac906458389c1bf14af648804fb394f8e2b4facd7a78",
+      "splits.csv": "72e8d86017874ae50aeb537c19913f06a4d53b2980126c6267fdc00048dc9019"
+    }
+  },
+  "overlaps": {
+    "train_val_groups": 0,
+    "test_groups_in_train": 975,
+    "test_groups_in_val": 229,
+    "test_rows_with_inputs_in_train_or_val": 8313,
+    "test_rows_total": 82332
+  }
+}

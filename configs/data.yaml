@@ -1,0 +1,15 @@
+# Preparación de datos y partición train/val (fija para todos los experimentos).
+raw_dir: data/raw
+out_dir: data/prepared
+train_file: UNSW_NB15_training-set.csv
+test_file: UNSW_NB15_testing-set.csv
+download_date: "2026-10-02"
+source: https://research.unsw.edu.au/projects/unsw-nb15-dataset
+
+target: label
+excluded: [id, label, attack_cat]   # id: orden del archivo (filtra la clase); attack_cat: es la respuesta
+categorical: [proto, service, state]
+
+seed: 42
+n_folds: 5            # StratifiedGroupKFold: el fold 0 es validación (~20 %)
+contradictions: drop  # grupos de entradas idénticas con etiquetas distintas se excluyen de train/val

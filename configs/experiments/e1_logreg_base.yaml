@@ -1,0 +1,9 @@
+id: e1_logreg_base
+family: logistic_regression
+hypothesis: >-
+  Una frontera lineal sobre variables escaladas y protocolos/servicios codificados
+  ya separa buena parte del tráfico; sirve como referencia sencilla.
+change: Referencia (sin cambios previos).
+preprocessing: {log1p: false, min_frequency: 20}
+params: {C: 1.0, max_iter: 2000}
+threshold: 0.5

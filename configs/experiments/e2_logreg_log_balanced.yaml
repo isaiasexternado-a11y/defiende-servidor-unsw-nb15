@@ -1,0 +1,10 @@
+id: e2_logreg_log_balanced
+family: logistic_regression
+hypothesis: >-
+  Bytes, carga y jitter tienen colas muy pesadas; comprimirlas con log1p hace más
+  lineal la separación. Pesar las clases (normal es minoría en train) debería bajar
+  la tasa de falsos positivos a costa de algo de recall.
+change: Frente a e1, log1p en numéricas y class_weight=balanced.
+preprocessing: {log1p: true, min_frequency: 20}
+params: {C: 1.0, max_iter: 2000, class_weight: balanced}
+threshold: 0.5
