@@ -1,0 +1,8 @@
+# Selección de v2 (solo con validación). El test no participa.
+v1: e1_logreg_base           # primera solución funcional, umbral 0.5
+v2: e4_hist_gradient_boosting
+# Política de umbral para v2: el mayor recall de ataque con FPR de validación <= max_fpr.
+# Razón: en un SOC cada falso positivo es una alerta que alguien revisa; 5 % es el tope aceptado.
+threshold_policy: max_recall_at_fpr
+max_fpr: 0.05
+grid_step: 0.005

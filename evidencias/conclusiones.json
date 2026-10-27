@@ -1,0 +1,6 @@
+{
+  "e1_logreg_base": "Referencia: recall alto (0.989) pero FPR 0.177; la frontera lineal confunde mucho tráfico normal con ataque. Se conserva como v1.",
+  "e2_logreg_log_balanced": "Hipótesis confirmada en parte: log1p + pesos balanceados bajan FPR a 0.081 (-54 %) pero el recall cae a 0.941; macro-F1 casi igual (0.925). El límite lineal sigue siendo el cuello de botella.",
+  "e3_random_forest": "Confirmada: las interacciones importan; macro-F1 sube a 0.945 con recall 0.980 y FPR 0.104. Modelo pesado (58 MB).",
+  "e4_hist_gradient_boosting": "Confirmada: mejor macro-F1 (0.950), FPR 0.083 con recall 0.976 y modelo de 1.1 MB. Elegido como base de v2 con umbral ajustado en validación."
+}

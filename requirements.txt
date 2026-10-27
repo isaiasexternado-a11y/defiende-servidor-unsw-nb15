@@ -4,3 +4,4 @@ scikit-learn
 mlflow
 prefect
 pyyaml
+huggingface_hub

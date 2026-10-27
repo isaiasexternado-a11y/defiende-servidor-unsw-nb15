@@ -1,0 +1,53 @@
+{
+  "run_id": "9682854f9eed4516b187ad6d713e9833",
+  "run_name": "e1_logreg_base",
+  "experiment": "defiende-servidor-unsw-nb15",
+  "start_time_ms": 1793128121765,
+  "end_time_ms": 1793128147918,
+  "params": {
+    "model.C": "1.0",
+    "model.max_iter": "2000",
+    "pre.log1p": "False",
+    "pre.min_frequency": "20",
+    "seed": "42",
+    "threshold": "0.5",
+    "config_path": "configs/experiments/e1_logreg_base.yaml",
+    "n_train": "139520",
+    "n_val": "34881",
+    "n_features": "42"
+  },
+  "metrics": {
+    "recall_attack": 0.9887205387205387,
+    "precision_attack": 0.922774766281719,
+    "fpr": 0.1767826634295477,
+    "f1_attack": 0.954610101995205,
+    "f1_normal": 0.8912577881619937,
+    "macro_f1": 0.9229339450785994,
+    "accuracy": 0.9359536710530088,
+    "cm_tn": 9155.0,
+    "cm_fp": 1966.0,
+    "cm_fn": 268.0,
+    "cm_tp": 23492.0,
+    "fit_seconds": 22.885379753000052
+  },
+  "tags": {
+    "mlflow.user": "isaias",
+    "mlflow.source.name": "/home/isaias/code/Ciberseguridad/src/train.py",
+    "mlflow.source.type": "LOCAL",
+    "mlflow.source.git.commit": "3fd054d7be2c6130d5f9696d859652b24889e647",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.repoURL": "https://github.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15.git",
+    "mlflow.runName": "e1_logreg_base",
+    "config_id": "e1_logreg_base",
+    "family": "logistic_regression",
+    "hypothesis": "Una frontera lineal sobre variables escaladas y protocolos/servicios codificados ya separa buena parte del tráfico; sirve como referencia sencilla.",
+    "change": "Referencia (sin cambios previos).",
+    "git_commit": "3fd054d7be2c6130d5f9696d859652b24889e647",
+    "dvc_prepared_md5": "3f6784bc3efe6154e32ef7baca8247a9.dir",
+    "dvc_raw_md5": "02b04edb2e25a537a7aa1cbf75c15435.dir",
+    "val_row_id_sha256": "e768091cf9767dc927493a17a46fe2d5cefa5e565c4f6dcd439d8fb3880a1acf",
+    "positive_class": "1 = ataque",
+    "zero_division": "none",
+    "model_sha256": "4a9e3d854a328082157a4f136a3ea1a2943d1f025c0144cd35a2300848907658"
+  }
+}
