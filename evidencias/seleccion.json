@@ -35,8 +35,10 @@
       },
       "reason": "Primera solución funcional: referencia lineal con umbral 0.5.",
       "huggingface": {
-        "repo": null,
-        "revision_sha": null
+        "repo": "Isxcesp/defiende-servidor-unsw-nb15",
+        "revision_sha": "98c0228f88069b0a48ff041388bd1a4eb76a309b",
+        "tag": "v1",
+        "url": "https://huggingface.co/Isxcesp/defiende-servidor-unsw-nb15/tree/98c0228f88069b0a48ff041388bd1a4eb76a309b"
       }
     },
     "v2": {
@@ -66,8 +68,10 @@
       },
       "reason": "Mejor macro-F1 de validación entre las 4 configuraciones a umbral 0.5 y modelo liviano. Umbral = mayor recall de ataque con FPR <= 0.05 en validación (barrido en evidencias/umbral_v2.csv).",
       "huggingface": {
-        "repo": null,
-        "revision_sha": null
+        "repo": "Isxcesp/defiende-servidor-unsw-nb15",
+        "revision_sha": "9da5454fe51b13cbb471a6b266d25ad681861504",
+        "tag": "v2",
+        "url": "https://huggingface.co/Isxcesp/defiende-servidor-unsw-nb15/tree/9da5454fe51b13cbb471a6b266d25ad681861504"
       }
     }
   }
