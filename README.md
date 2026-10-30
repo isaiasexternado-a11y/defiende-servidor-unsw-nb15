@@ -30,19 +30,23 @@ pip install -r requirements-lock.txt
 ## 2. Recuperar los datos con DVC
 
 ```bash
-dvc pull            # trae data/raw (archivos recibidos) y data/prepared (splits) desde DagsHub
+dvc pull            # trae data/raw (archivos recibidos) y data/prepared (splits) desde el remoto por defecto (hf, sin credenciales)
 dvc status          # debe decir "Data and pipelines are up to date."
 sha256sum data/raw/UNSW_NB15_training-set.csv data/raw/UNSW_NB15_testing-set.csv
 # bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa  (training)
 # 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559  (testing)
 ```
 
-Si el remoto pidiera credenciales (repo privado), se añaden solo en local, nunca en Git:
+Hay dos remotos con el mismo contenido (`dvc remote list`):
+
+- `hf` (por defecto, solo lectura): espejo en el dataset público https://huggingface.co/datasets/Isxcesp/defiende-servidor-unsw-nb15-dvc, servido por HTTP. No pide cuenta ni token.
+- `origin`: almacenamiento DVC de DagsHub, donde se hace `dvc push`. Exige autenticación incluso con el repo público; las credenciales van solo en local, nunca en Git:
 
 ```bash
 dvc remote modify --local origin auth basic
 dvc remote modify --local origin user <usuario_dagshub>
 dvc remote modify --local origin password <token_dagshub>
+dvc push -r origin   # el espejo hf se actualiza aparte, subiendo .dvc/cache al dataset con `hf upload`
 ```
 
 Alternativa sin DVC: `python -m src.data.download --full` descarga los CSV desde la fuente oficial de UNSW y verifica sus SHA-256.

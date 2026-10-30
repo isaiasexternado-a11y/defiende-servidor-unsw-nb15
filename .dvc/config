@@ -1,4 +1,6 @@
 [core]
-    remote = origin
+    remote = hf
 ['remote "origin"']
     url = https://dagshub.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15.dvc
+['remote "hf"']
+    url = https://huggingface.co/datasets/Isxcesp/defiende-servidor-unsw-nb15-dvc/resolve/main

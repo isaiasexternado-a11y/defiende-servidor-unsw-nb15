@@ -193,7 +193,8 @@ tienen entradas idénticas a alguna de train/val.</p>
 <p><b>Dos versiones de datos en DVC.</b> <span class=mono>data/raw.dvc</span> (archivos recibidos, md5
 <span class=mono>{raw_md5}</span>)
 y <span class=mono>data/prepared.dvc</span> (train/val/test preparados y asignación de filas, md5
-<span class=mono>{v2['dvc_prepared_md5']}</span>), con remoto en DagsHub.</p>
+<span class=mono>{v2['dvc_prepared_md5']}</span>), con remoto principal en DagsHub y un espejo de lectura anónima en
+Hugging Face (remoto por defecto <span class=mono>hf</span>).</p>
 
 <h2>2. Cuatro experimentos</h2>
 <p>Las cuatro configuraciones usan la misma partición, la misma semilla y el mismo preprocesamiento base (mediana +
@@ -311,7 +312,8 @@ población de entrenamiento. Además, los duplicados pesan más en el ajuste.</l
 MLflow se usó en local (SQLite) y la evidencia consultable es la exportación en
 <span class=mono>evidencias/mlflow/</span>.</li>
 <li><b>Acceso a datos.</b> El almacenamiento DVC de DagsHub requiere autenticación incluso con el repositorio público.
-El acceso del docente se describe en <span class=mono>entrega.md</span>.</li>
+Por eso el remoto por defecto es un espejo de solo lectura en un dataset público de Hugging Face, que se mantiene
+aparte de DagsHub (ver <span class=mono>entrega.md</span>).</li>
 </ul>
 
 <div class="refs">
@@ -333,7 +335,8 @@ https://huggingface.co/docs/hub/model-cards</li>
 <h2>Repositorios</h2>
 <ul>
 <li>Código: https://github.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15 (tags v1, v2)</li>
-<li>Datos (DVC): https://dagshub.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15</li>
+<li>Datos (DVC, lectura anónima): https://huggingface.co/datasets/Isxcesp/defiende-servidor-unsw-nb15-dvc</li>
+<li>Datos (DVC, principal): https://dagshub.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15</li>
 <li>Modelos: https://huggingface.co/Isxcesp/defiende-servidor-unsw-nb15</li>
 </ul>
 <p style="margin-top:10px"><b>Uso de IA.</b> Este proyecto se desarrolló con apoyo de Claude Code (Anthropic). El detalle

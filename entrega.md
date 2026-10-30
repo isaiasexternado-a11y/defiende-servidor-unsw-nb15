@@ -6,7 +6,8 @@
 - **Código (GitHub):** https://github.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15
 - **Commit final de la entrega:** el que se indica en el mensaje de entrega (HEAD de `main`); este archivo se actualizó por última vez en ese commit.
 - **Modelos (Hugging Face):** https://huggingface.co/Isxcesp/defiende-servidor-unsw-nb15
-- **Almacenamiento DVC (DagsHub):** https://dagshub.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15 · remoto `origin` = `https://dagshub.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15.dvc`
+- **Almacenamiento DVC, lectura anónima (remoto por defecto `hf`):** https://huggingface.co/datasets/Isxcesp/defiende-servidor-unsw-nb15-dvc
+- **Almacenamiento DVC, principal (DagsHub):** https://dagshub.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15 · remoto `origin` = `https://dagshub.com/isaiasexternado-a11y/defiende-servidor-unsw-nb15.dvc`
 
 ## Versiones
 
@@ -35,15 +36,16 @@ Las dos versiones se entrenaron en el mismo commit (el de los cuatro experimento
 | Selección y umbral | `evidencias/seleccion.json`, barrido de umbral en `evidencias/umbral_v2.csv` |
 | Métricas de test | `evidencias/metricas-test.json` |
 | Predicciones de test | `evidencias/predicciones-test.csv` (82.332 filas: `row_id, y_true, score_attack, y_pred`) |
-| Recuperación | `evidencias/recuperacion/` (entradas, salidas antes) y `evidencias/recuperacion/entorno-nuevo/` (log, comandos, salidas después, comparación) |
+| Recuperación | `evidencias/recuperacion/` (entradas, salidas antes) y `evidencias/recuperacion/entorno-nuevo/` (log, comandos, salidas después, comparación); prueba del espejo anónimo en `evidencias/recuperacion/espejo-hf.txt` |
 | Informe | `informe/informe.pdf` (también adjunto al mensaje de entrega); se genera con `python informe/build.py` a partir de los archivos de evidencia |
 
 `row_id` = `<archivo>:<fila>` con fila 0-based sin encabezado; `train:` es `UNSW_NB15_training-set.csv` y `test:` es `UNSW_NB15_testing-set.csv`.
 
 ## Acceso
 
-- GitHub y Hugging Face son públicos: `git clone` y la descarga de modelos no necesitan credenciales.
-- DagsHub también es público, pero su almacenamiento DVC exige autenticación incluso en repos públicos (probado: `dvc pull` anónimo responde 401). Se solicitó al docente su usuario de DagsHub para invitarlo como colaborador con rol de lectura; con esa invitación y un token propio basta configurar las credenciales en `.dvc/config.local` (ver README, sección 2).
+- GitHub y Hugging Face son públicos: `git clone`, `dvc pull` y la descarga de modelos no necesitan credenciales.
+- `dvc pull` usa por defecto el remoto `hf`, un espejo de solo lectura del almacenamiento DVC publicado como dataset de Hugging Face y servido por HTTP. Contiene los mismos 20 objetos (mismos md5) que DagsHub.
+- DagsHub (`origin`) es el remoto donde se hizo `dvc push`. Su almacenamiento DVC exige autenticación incluso con el repo público (probado: `dvc pull -r origin` anónimo responde 401); por eso se añadió el espejo.
 - No hay tokens ni contraseñas en el repositorio; las credenciales de DVC se guardan solo en `.dvc/config.local` (ignorado por Git).
 
 ## Comandos

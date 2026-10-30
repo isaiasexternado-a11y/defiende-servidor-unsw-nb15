@@ -1,0 +1,13 @@
+Prueba del espejo DVC anónimo (remoto hf) · 2026-10-30
+Dataset: https://huggingface.co/datasets/Isxcesp/defiende-servidor-unsw-nb15-dvc (subida 94d7a5a8…, ficha 4d88538f…)
+Clon nuevo, caché DVC vacía, sin token de Hugging Face ni credenciales en .dvc/config.local:
+
+$ dvc pull
+A       data/prepared/
+A       data/raw/
+18 files fetched and 16 files added      (1 min 11 s)
+$ dvc status
+Data and pipelines are up to date.
+$ sha256sum data/raw/UNSW_NB15_training-set.csv data/raw/UNSW_NB15_testing-set.csv
+bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa  data/raw/UNSW_NB15_training-set.csv
+734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559  data/raw/UNSW_NB15_testing-set.csv

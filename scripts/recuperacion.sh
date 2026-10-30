@@ -4,7 +4,7 @@
 #   bash scripts/recuperacion.sh [CARPETA_NUEVA] [REVISION_GIT]
 #
 # 1) clona el código en la revisión elegida e instala dependencias fijadas en un venv nuevo
-# 2) recupera con DVC los datos originales y preparados desde DagsHub y verifica huellas
+# 2) recupera con DVC los datos originales y preparados desde el remoto por defecto y verifica huellas
 # 3-4) descarga v1 y v2 de Hugging Face por SHA (caché nueva) y predice las mismas entradas fijas
 # 5) compara con las salidas de referencia
 set -euo pipefail
@@ -30,12 +30,12 @@ $PYTHON -m venv .venv
 .venv/bin/pip freeze | grep -iE '^(scikit-learn|numpy|pandas|dvc|huggingface.hub|mlflow)=='
 
 echo "## 2. datos con DVC desde el remoto (caché vacía: $(ls .dvc/cache 2>/dev/null | wc -l) entradas)"
-if [ -n "${DAGSHUB_USER:-}" ]; then   # solo si el repo de DagsHub es privado
+if [ -n "${DAGSHUB_USER:-}" ]; then   # para leer de DagsHub (DVC_REMOTE=origin), que exige credenciales
   .venv/bin/dvc remote modify --local origin auth basic
   .venv/bin/dvc remote modify --local origin user "$DAGSHUB_USER"
   .venv/bin/dvc remote modify --local origin password "$DAGSHUB_TOKEN"
 fi
-.venv/bin/dvc pull
+.venv/bin/dvc pull ${DVC_REMOTE:+-r "$DVC_REMOTE"}
 .venv/bin/dvc status
 echo "SHA-256 originales contra MANIFEST.json:"
 .venv/bin/python - <<'PY'
