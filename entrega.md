@@ -36,13 +36,14 @@ Las dos versiones se entrenaron en el mismo commit (el de los cuatro experimento
 | Métricas de test | `evidencias/metricas-test.json` |
 | Predicciones de test | `evidencias/predicciones-test.csv` (82.332 filas: `row_id, y_true, score_attack, y_pred`) |
 | Recuperación | `evidencias/recuperacion/` (entradas, salidas antes) y `evidencias/recuperacion/entorno-nuevo/` (log, comandos, salidas después, comparación) |
-| Informe | `informe.pdf` (adjunto al mensaje de entrega) |
+| Informe | `informe/informe.pdf` (también adjunto al mensaje de entrega); se genera con `python informe/build.py` a partir de los archivos de evidencia |
 
 `row_id` = `<archivo>:<fila>` con fila 0-based sin encabezado; `train:` es `UNSW_NB15_training-set.csv` y `test:` es `UNSW_NB15_testing-set.csv`.
 
 ## Acceso
 
-- GitHub, DagsHub y Hugging Face son públicos: no se necesitan credenciales para `git clone`, `dvc pull` ni para descargar los modelos.
+- GitHub y Hugging Face son públicos: `git clone` y la descarga de modelos no necesitan credenciales.
+- DagsHub también es público, pero su almacenamiento DVC exige autenticación incluso en repos públicos (probado: `dvc pull` anónimo responde 401). Se solicitó al docente su usuario de DagsHub para invitarlo como colaborador con rol de lectura; con esa invitación y un token propio basta configurar las credenciales en `.dvc/config.local` (ver README, sección 2).
 - No hay tokens ni contraseñas en el repositorio; las credenciales de DVC se guardan solo en `.dvc/config.local` (ignorado por Git).
 
 ## Comandos
